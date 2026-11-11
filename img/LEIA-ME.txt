@@ -1,27 +1,13 @@
-IMAGENS REAIS (OPCIONAL)
+FOTOS DOS ESTANDES (opcional)
+-----------------------------
+Coloque aqui as imagens com estes nomes (JPG, ~1200 px de largura):
+  e{estande}-0.jpg      capa do estande   (proporção 4:3)
+  e{estande}-1.jpg ... e{estande}-5.jpg   galeria (proporção 16:10)
+Exemplo: e5-0.jpg = capa do estande 5; e1-3.jpg = 3ª imagem da galeria do estande 1.
 
-O guia usa desenhos prontos. Para trocar qualquer desenho por uma foto ou obra real,
-coloque um arquivo JPG nesta pasta com o nome do espaço correspondente.
-Se o arquivo não existir, o desenho padrão continua aparecendo.
+Depois liste os arquivos que existem em fotos.json, por exemplo:
+  ["e1-0.jpg","e1-1.jpg","e5-0.jpg"]
+O que não estiver na lista continua com o desenho original.
 
-Nome do arquivo: e{estande}-{espaço}.jpg
-  espaço 0 = capa do estande
-  espaço 1 a 5 = as cinco imagens da galeria (na ordem da galeria)
-
-Exemplos:
-  e1-0.jpg  capa do estande 1 (São Jerônimo)
-  e1-1.jpg  primeira imagem da galeria do estande 1
-  e5-0.jpg  capa do estande 5 (Capela Sistina)
-  e5-1.jpg  primeira imagem da galeria do estande 5
-
-Tamanho sugerido: 1200 px de largura, formato horizontal (16:10 para a galeria,
-4:3 para a capa). A capa recebe um degradê escuro embaixo para o título.
-
-Onde buscar imagens livres (domínio público): Wikimedia Commons (commons.wikimedia.org).
-  Estande 1: pinturas de São Jerônimo (por exemplo, de Caravaggio) e manuscritos da Vulgata
-  Estande 2: páginas de manuscritos bíblicos e do Codex
-  Estande 3: Bíblia de Gutenberg, Bíblia de Lutero
-  Estande 4: manuscritos e mapas bíblicos
-  Estande 5: categorias "Sistine Chapel ceiling" e "Sistine Chapel - Last Judgment"
-Confira a licença de cada arquivo antes de usar: obras antigas são de domínio público,
-mas fotografias modernas dessas obras podem ter restrições. Cite a fonte quando possível.
+Sugestão de fonte: Wikimedia Commons (commons.wikimedia.org), obras de domínio público.
+Confira a licença de cada arquivo e dê o crédito quando exigido.

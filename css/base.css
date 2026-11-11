@@ -1,0 +1,1 @@
+:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}.gal button img,.fig img,.lbi img{display:block;width:100%;height:auto;max-height:70vh;object-fit:cover}

@@ -1,0 +1,1 @@
+window.__inst=location.hash==="#instalar";window.__dip=null;addEventListener("beforeinstallprompt",function(e){e.preventDefault();window.__dip=e;window.__dipf&&window.__dipf()});if("serviceWorker"in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});

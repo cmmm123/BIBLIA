@@ -1,0 +1,72 @@
+const DATA=[
+{t:"Entre manuscritos e tradições, o legado de São Jerônimo",sub:"A origem da Bíblia em latim",cover:C1,
+ lead:"Há mais de 1.600 anos, um estudioso decidiu que todos deveriam poder ler a Bíblia na língua que entendiam.",
+ secs:[
+ {h:"Quem foi Jerônimo",p:"Jerônimo nasceu por volta do ano 347 e, desde jovem, se interessou pelos estudos e pelas Sagradas Escrituras."},
+ {h:"Por que traduzir a Bíblia?",p:"Existiam versões em latim com erros e diferenças. O objetivo de Jerônimo era criar uma tradução mais fiel aos textos originais, para que as pessoas pudessem compreender melhor a Palavra de Deus."},
+ {h:"Uma missão do papa",p:"Ele recebeu essa missão do papa Dâmaso. Para realizá-la, estudou hebraico e grego, comparando os textos antigos."},
+ {h:"A Vulgata",p:"O trabalho levou vários anos e ficou conhecido como Vulgata, uma tradução muito importante para a Igreja Católica. A palavra, em latim, quer dizer edição comum, do povo."},
+ {h:"Por que um leão?",p:"Segundo uma antiga lenda, Jerônimo encontrou um leão com um espinho na pata, retirou o espinho e cuidou dele. Desde então, o animal teria permanecido ao seu lado, como companheiro. Por isso o santo é frequentemente representado com um leão."},
+ {h:"São Jerônimo",p:"Por toda a sua dedicação à Palavra de Deus, foi canonizado pela Igreja Católica e passou a ser conhecido como São Jerônimo."}],
+ quote:{t:"Meu objetivo era criar uma tradução mais fiel aos textos originais, para que as pessoas compreendessem melhor a Palavra de Deus.",by:"São Jerônimo"},
+ curios:[
+ {f:"O leão de Jerônimo",b:"A lenda do leão com o espinho na pata é a razão de o santo aparecer sempre acompanhado de um leão nas imagens."},
+ {f:"Dia do tradutor",b:"A Igreja celebra São Jerônimo em 30 de setembro, mesmo dia do Dia Internacional da Tradução. Ele é padroeiro dos tradutores e dos bibliotecários."},
+ {f:"A Bíblia de mil anos",b:"A Vulgata foi a Bíblia mais usada no Ocidente por mais de mil anos. Em 1546, o Concílio de Trento a declarou autêntica para o uso público na Igreja."}],
+ gal:[{svg:A1[0],cap:"O scriptorium, onde Jerônimo traduzia"},{svg:A1[1],cap:"O caminho de Jerônimo, de Estridão a Belém"},{svg:A1[2],cap:"Do hebraico e do grego para o latim"},{svg:A1[3],cap:"O leão, símbolo de São Jerônimo"},{svg:A1[4],cap:"Linha do tempo da Vulgata"}]},
+{t:"Bíblia: uma diversidade de textos e histórias",sub:"Como cada texto fala",cover:C2,
+ lead:"As cartas e as parábolas são duas formas poderosas de comunicar a fé: uma por escrito, a outra contada de viva voz.",
+ secs:[
+ {h:"As cartas: o coração das primeiras comunidades",p:"No Novo Testamento, as epístolas (cartas) não eram tratados teóricos distantes. Eram correspondências reais, enviadas a cidades do Império Romano, como Corinto, Roma e Éfeso, que enfrentavam crises, perseguições ou dúvidas doutrinárias."},
+ {h:"O papel de Paulo",p:"O apóstolo Paulo usava a escrita como um abraço à distância e uma bronca afetuosa. Em suas cartas, ele equilibrava profunda teologia com conselhos práticos sobre o amor, a paciência e a convivência em comunidade. Ler uma carta dessas é como abrir uma janela para o cotidiano dos primeiros cristãos."},
+ {h:"As parábolas: histórias que desafiam o olhar",p:"Jesus era um mestre da contação de histórias. Ele não se limitava a discursos abstratos: preferia usar o cotidiano, como sementes, redes de pesca, moedas perdidas e pastores, para ilustrar o Sagrado."},
+ {h:"O impacto do Bom Samaritano",p:"Parábolas como a do Bom Samaritano funcionavam, e ainda funcionam, como espelhos. Ao desafiar os preconceitos da época e mostrar que o “próximo” é quem age com compaixão, Jesus tirava o ouvinte da zona de conforto e o convidava a uma mudança radical de atitude."},
+ {h:"Duas pontes extraordinárias",p:"Cartas e parábolas são pontes. As cartas trazem a estrutura, a doutrina e o encorajamento direto para a caminhada; as parábolas tocam o coração e a imaginação, garantindo que os valores do Evangelho sejam inesquecíveis e acessíveis a qualquer pessoa, em qualquer época."}],
+ quote:{t:"Cartas e parábolas são pontes: uma traz a doutrina e o encorajamento, a outra toca o coração e a imaginação.",by:"Para lembrar"},
+ curios:[
+ {f:"A parábola do semeador",b:"Jesus contava histórias do dia a dia, como a do semeador, para ensinar sobre o Reino de Deus. A imagem simples ficava na memória de quem ouvia."},
+ {f:"21 cartas",b:"Treze cartas levam o nome de Paulo. Outras oito, entre elas Hebreus, Tiago, Pedro, João e Judas, completam as 21 cartas do Novo Testamento."},
+ {f:"O Bom Samaritano",b:"A parábola está no Evangelho de Lucas, capítulo 10. Um samaritano, de um povo desprezado na época, é quem ajuda o homem ferido na estrada."}],
+ gal:[{svg:A2[0],cap:"Mapa dos gêneros, com um exemplo de cada"},{svg:A2[1],cap:"Parábola do semeador (Lucas 8)"},{svg:A2[2],cap:"As cartas do Novo Testamento"},{svg:A2[3],cap:"Salmos: poesia e oração"},{svg:A2[4],cap:"Apocalipse: o livro das visões"}]},
+{t:"Bíblias em perspectivas, diferenças e semelhanças",sub:"Católica, evangélica, ortodoxa",cover:C3,
+ lead:"A Bíblia é um livro sagrado para os cristãos e é dividida em Antigo e Novo Testamento. Mas existem diferentes tradições bíblicas.",
+ secs:[
+ {h:"Diferentes tradições",p:"Existem diferentes tradições bíblicas, como a católica, a evangélica, a protestante e a ortodoxa. Todas usam os mesmos 27 livros do Novo Testamento; a diferença maior está no Antigo Testamento."},
+ {h:"Católica: 73 livros",p:"A Bíblia católica possui 73 livros: 46 no Antigo Testamento e 27 no Novo Testamento. Entre os 46 estão sete livros chamados deuterocanônicos, como Tobias, Judite e Macabeus."},
+ {h:"Evangélica e protestante: 66 livros",p:"A Bíblia evangélica e a protestante geralmente possuem 66 livros: 39 no Antigo Testamento e 27 no Novo Testamento. Elas seguem a lista dos livros escritos em hebraico."},
+ {h:"E a ortodoxa?",p:"A tradição ortodoxa apresenta diferenças na quantidade e na organização dos livros, dependendo da Igreja."},
+ {h:"Traduções e linguagem",p:"Além disso, existem diferenças nas traduções e na linguagem dos textos. Conhecer essas variações nos ajuda a compreender a diversidade do cristianismo e a respeitar as diferentes crenças."}],
+ quote:{t:"Conhecer essas variações nos ajuda a compreender a diversidade do cristianismo e a respeitar as diferentes crenças.",by:"Para lembrar"},
+ curios:[
+ {f:"A Septuaginta",b:"No século III a.C., judeus de Alexandria traduziram o Antigo Testamento para o grego. Essa versão, chamada Septuaginta, inclui os livros que hoje são deuterocanônicos."},
+ {f:"Lutero e a Bíblia",b:"Em 1517, Lutero deu início à Reforma Protestante. Em 1534, publicou a Bíblia completa em alemão, para que o povo pudesse lê-la."},
+ {f:"Almeida no Brasil",b:"A Bíblia protestante mais conhecida em português é a de João Ferreira de Almeida, cujo Novo Testamento foi publicado em 1681."}],
+ gal:[{svg:A3[0],cap:"Quantos livros tem cada Bíblia"},{svg:A3[1],cap:"Antigo e Novo Testamento em cada tradição"},{svg:A3[2],cap:"Os sete livros deuterocanônicos"},{svg:A3[3],cap:"Árvore simplificada do cristianismo"},{svg:A3[4],cap:"Marcos históricos"}]},
+{t:"Por dentro da Bíblia: como as escrituras se organizam",sub:"Testamentos, livros e versículos",cover:C4,
+ lead:"A Bíblia é dividida em duas partes e em diferentes grupos de livros. Essa organização ajuda a entender melhor a sua história e as suas mensagens.",
+ secs:[
+ {h:"As duas partes",p:"O Antigo Testamento conta a criação do mundo e a história do povo de Israel. O Novo Testamento apresenta a vida e os ensinamentos de Jesus e a história dos primeiros cristãos."},
+ {h:"Grupos de livros",p:"A Bíblia também possui diferentes grupos de livros, como os históricos, os poéticos, os proféticos e os Evangelhos. Entre os poéticos estão Salmos e Provérbios; no começo do Antigo Testamento está a Lei, onde se encontram os Dez Mandamentos."},
+ {h:"Uma curiosidade",p:"A Bíblia católica possui 73 livros, enquanto a protestante possui 66, devido às diferenças entre suas tradições."}],
+ quote:{t:"Essa organização nos ajuda a compreender melhor a história e as mensagens da Bíblia.",by:"Para lembrar"},
+ curios:[
+ {f:"Bíblia quer dizer livros",b:"A palavra Bíblia vem do grego biblía, que significa livros. Ela foi escrita por cerca de 40 autores ao longo de aproximadamente 1.500 anos."},
+ {f:"Como ler uma citação",b:"João 3,16 quer dizer livro de João, capítulo 3, versículo 16. A divisão em capítulos surgiu no século XIII, e a numeração dos versículos, no século XVI."},
+ {f:"Salmos em cinco partes",b:"O livro dos Salmos tem 150 poemas, organizados em cinco coleções, como se fossem cinco pequenos livros."}],
+ gal:[{svg:A4[0],cap:"Os grupos de livros de cada testamento"},{svg:A4[1],cap:"As tábuas dos Dez Mandamentos"},{svg:A4[2],cap:"Como ler uma citação bíblica"},{svg:A4[3],cap:"Provérbios: um capítulo para cada dia do mês"},{svg:A4[4],cap:"Os cinco livros dos Salmos"}]},
+{t:"A Bíblia em cores: as escrituras através da arte",sub:"Obras sacras",cover:C5,
+ lead:"A Capela Sistina, no Vaticano, é um dos maiores exemplos da arte renascentista. Suas pinturas contam histórias da Bíblia em cores, detalhes e figuras humanas.",
+ secs:[
+ {h:"Arte e religião",p:"A Capela Sistina, localizada no Vaticano, é um dos maiores exemplos da arte renascentista. Sua decoração possui pinturas religiosas no teto e nas paredes, com riqueza de cores, detalhes e figuras humanas."},
+ {h:"Características da arte",p:"A arte apresenta características como realismo, profundidade, proporção e valorização do corpo humano. Seu objetivo é transmitir histórias e ensinamentos da religião cristã."},
+ {h:"1. A Queda do Homem",p:"Mostra Adão e Eva desobedecendo a Deus, simbolizando o pecado e a perda da inocência."},
+ {h:"2. A Santa Ceia",p:"Representa Jesus e seus doze discípulos na última refeição, simbolizando a fé e a união cristã."},
+ {h:"3. A Entrega das Chaves",p:"Mostra Jesus entregando as chaves do Reino dos Céus a Pedro, representando sua autoridade na Igreja."},
+ {h:"4. A Criação de Adão",p:"Mostra Deus dando vida a Adão, simbolizando a ligação entre Deus e a humanidade."}],
+ quote:{t:"Seu objetivo é transmitir histórias e ensinamentos da religião cristã.",by:"Capela Sistina"},
+ curios:[
+ {f:"Em pé, não deitado",b:"Ao contrário do que muita gente imagina, Michelangelo pintou o teto em pé, sobre andaimes, com a cabeça inclinada para trás."},
+ {f:"A fumaça branca",b:"É na Sistina que acontece o conclave. Quando a fumaça sobe branca pela chaminé do telhado, o mundo sabe que há um novo papa."},
+ {f:"Quem pintou cada uma",b:"A Queda do Homem e a Criação de Adão são de Michelangelo, no teto. A Entrega das Chaves é de Perugino e a Santa Ceia, de Cosimo Rosselli, nas paredes laterais."}],
+ gal:[{svg:A5[0],cap:"As nove cenas do teto, do altar à entrada"},{svg:A5[1],cap:"Planta simplificada da capela"},{svg:A5[2],cap:"Linha do tempo da Capela Sistina"},{svg:A5[3],cap:"A chaminé do conclave"},{svg:A5[4],cap:"O teto em números"}]}
+];
