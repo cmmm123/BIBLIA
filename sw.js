@@ -1,4 +1,4 @@
-const V="biblia-v4",FILES=["/","/biblia/","/manifest.webmanifest","/icon-192.png","/icon-512.png"];
+const V="biblia-v5",FILES=["/","/biblia/","/manifest.webmanifest","/oracoes.js","/icon-192.png","/icon-512.png"];
 self.addEventListener("install",e=>{
   e.waitUntil(caches.open(V).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()));
 });
