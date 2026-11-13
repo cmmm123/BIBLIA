@@ -54,6 +54,7 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.15}
 .cover .ct{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;color:#f6ead3}
 .cover .ct small{display:block;font:italic 600 14px var(--ff);color:#d9a866;margin-bottom:4px}
 .cover .ct h2{font-size:27px}
+.img-credit{margin:6px 2px 10px;font:italic 12px/1.4 system-ui,sans-serif;color:var(--mut)}.img-credit a{color:var(--gold);text-decoration:underline}
 .meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
 .chip{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:7px 13px;font:600 14px var(--ff);color:var(--ink);display:inline-flex;align-items:center;gap:6px}
 button.chip{cursor:pointer}
@@ -372,9 +373,11 @@ function home(){
 <p class="hint">Ao terminar um estande, toque em Próximo (ou arraste a tela) para seguir ao seguinte.</p></div>`;
 }
 const TABS=[["r","Resumo"],["g","Galeria"],["c","Curiosidades"],["d","Quiz"]];
+const CREDITS=[["Bartolomeo Cavarozzi, São Jerônimo","https://commons.wikimedia.org/wiki/File:St.-Jerome-In-His-Study.jpg"],["Jan Lievens, São Paulo escrevendo aos Tessalonicenses (domínio público)","https://commons.wikimedia.org/wiki/File:Jan_Lievens_-_St._Paul_writing_to_the_Thessalonians.jpg"],["Norbert Kiss, coleção de Bíblias (CC BY-SA 2.0)","https://commons.wikimedia.org/wiki/File:Collection_of_Bibles_and_New_Testaments.jpg"],["Wnorbutas, Bíblia aberta (CC BY-SA 3.0)","https://commons.wikimedia.org/wiki/File:Open_Bible.jpg"],["Michelangelo, teto da Capela Sistina (domínio público)","https://commons.wikimedia.org/wiki/File:Sistine_ceiling.jpg"]];
 function stand(n){
   const x=ST[n-1],nx=n<N?ST[n]:null,tab=tabs[n]||"r";
   return `<div class="in pad"><div class="cover">${DATA[n-1].cover}<div class="ct"><small>Estande ${n} de ${N}</small><h2>${x.t}</h2></div></div>
+<p class="img-credit">Imagem: <a href="${CREDITS[n-1][1]}" target="_blank" rel="noopener noreferrer">${CREDITS[n-1][0]}</a> · Wikimedia Commons</p>
 <div class="meta"><button class="chip" data-fs="1" aria-label="Aumentar o texto">A+</button><button class="chip" data-fs="-1" aria-label="Diminuir o texto">A–</button></div>
 <div class="tabs">${TABS.map(t=>`<button data-t="${t[0]}" class="${tab===t[0]?"on":""}">${t[1]}</button>`).join("")}</div>
 <div class="tc"></div>
