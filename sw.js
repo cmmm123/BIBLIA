@@ -1,27 +1,52 @@
-const V="biblia-v5",FILES=["/","/biblia/","/manifest.webmanifest","/oracoes.js","/icon-192.png","/icon-512.png"];
+const V="biblia-v6";
+const FILES=["/biblia/","/oracoes.js","/icon-192.png","/icon-512.png"];
+const APP_PATH="/biblia/";
+const SHARED_ASSETS=new Set(["/oracoes.js","/icon-192.png","/icon-512.png"]);
+
+function isAppRequest(url){
+  return url.pathname===APP_PATH || url.pathname.startsWith(APP_PATH) || SHARED_ASSETS.has(url.pathname);
+}
+
 self.addEventListener("install",e=>{
   e.waitUntil(caches.open(V).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()));
 });
+
 self.addEventListener("activate",e=>{
-  e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()));
+  e.waitUntil(
+    caches.keys()
+      .then(keys=>Promise.all(keys.filter(key=>key.startsWith("biblia-v")&&key!==V).map(key=>caches.delete(key))))
+      .then(()=>self.clients.claim())
+  );
 });
+
 self.addEventListener("fetch",e=>{
-  const r=e.request;
-  if(r.method!=="GET"||new URL(r.url).origin!==location.origin)return;
-  const doc=r.mode==="navigate"||r.destination==="document";
-  if(doc){
-    e.respondWith(fetch(r).then(res=>{
-      if(res.ok){const copy=res.clone();caches.open(V).then(c=>c.put(r,copy));}
-      return res;
-    }).catch(async()=>{
-      const c=await caches.open(V);
-      return await c.match(r,{ignoreSearch:true})||await c.match("/biblia/")||await c.match("/");
-    }));
+  const request=e.request;
+  const url=new URL(request.url);
+  if(request.method!=="GET"||url.origin!==location.origin||!isAppRequest(url))return;
+
+  const isDocument=request.mode==="navigate"||request.destination==="document";
+  if(isDocument){
+    e.respondWith(
+      fetch(request).then(response=>{
+        if(response.ok){
+          const copy=response.clone();
+          caches.open(V).then(cache=>cache.put(request,copy));
+        }
+        return response;
+      }).catch(async()=>{
+        const cache=await caches.open(V);
+        return await cache.match(request,{ignoreSearch:true})||await cache.match(APP_PATH);
+      })
+    );
     return;
   }
-  e.respondWith(caches.open(V).then(async c=>{
-    const hit=await c.match(r,{ignoreSearch:true});
-    const net=fetch(r).then(res=>{if(res.ok)c.put(r,res.clone());return res}).catch(()=>hit);
-    return hit||net;
+
+  e.respondWith(caches.open(V).then(async cache=>{
+    const cached=await cache.match(request,{ignoreSearch:true});
+    const network=fetch(request).then(response=>{
+      if(response.ok)cache.put(request,response.clone());
+      return response;
+    }).catch(()=>cached);
+    return cached||network;
   }));
 });
