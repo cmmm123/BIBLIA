@@ -17,19 +17,7 @@ window.addEventListener("appinstalled",function(){
   var button=document.getElementById("inst");
   if(button)button.textContent="Aplicativo instalado";
 });
-document.addEventListener("click",function(event){
-  var button=event.target.closest("#inst");
-  if(!button)return;
-  event.preventDefault();
-  var promptEvent=window.__bibliaInstallPrompt;
-  if(!promptEvent)return;
-  window.__bibliaInstallPrompt=null;
-  promptEvent.prompt();
-  promptEvent.userChoice.then(function(choice){
-    if(choice.outcome==="accepted")button.textContent="Instalando o aplicativo...";
-    else window.__bibliaInstallPrompt=promptEvent;
-  }).catch(function(){window.__bibliaInstallPrompt=promptEvent;});
-});
+// O botão é ligado diretamente depois que o conteúdo da página é montado.
 </script>
 <style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}.gal button img,.fig img,.lbi img{display:block;width:100%;height:auto;max-height:70vh;object-fit:cover}
 </style>
@@ -526,6 +514,25 @@ addEventListener("resize",()=>{pg.scrollLeft=Math.max(0,cur)*pg.clientWidth;fram
 const rr={};
 function loadReal(){DATA.forEach((D,i)=>{const n=i+1;for(let k=0;k<=5;k++){const src="img/e"+n+"-"+k+".jpg",im=new Image();im.onload=()=>{const tag='<img src="'+src+'" alt="'+(k?D.gal[k-1].cap:D.t)+'" loading="lazy">';if(k)D.gal[k-1].svg=tag;else D.cover=tag;clearTimeout(rr[n]);rr[n]=setTimeout(()=>{pane(n).innerHTML=stand(n);content(n)},80)};im.src=src}})}
 build();
+const installButton=document.getElementById("inst");
+if(installButton){
+  installButton.addEventListener("click",function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    var promptEvent=window.__bibliaInstallPrompt;
+    if(!promptEvent){
+      installButton.textContent="Chrome ainda não liberou a instalação";
+      installButton.setAttribute("aria-live","polite");
+      return;
+    }
+    window.__bibliaInstallPrompt=null;
+    promptEvent.prompt();
+    promptEvent.userChoice.then(function(choice){
+      if(choice.outcome==="accepted")installButton.textContent="Instalando o aplicativo...";
+      else window.__bibliaInstallPrompt=promptEvent;
+    }).catch(function(){window.__bibliaInstallPrompt=promptEvent;});
+  });
+}
 const first=parse();pg.scrollLeft=first*pg.clientWidth;cur=first;
 if(first>=1&&first<=5&&!seen.includes(first)){seen.push(first);lsS("mostra-vistos",seen);pane(0).innerHTML=home()}
 paint();paintTheme();frame();
