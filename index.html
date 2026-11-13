@@ -220,7 +220,8 @@ G(R(30,40,120,60,P.cr,{s:P.deep,r:8,sw:2})+T(90,66,'Hebraico',{s:17,w:700})+T(90
 G(R(0,0,400,250,'#ecd9ad')+lion(140,120,78)+openBook(300,126,128,70,P.cr,P.deep)+T(300,226,'Vulgata',{s:15,i:1,w:700})+T(140,232,'O leão da lenda',{s:13,i:1,f:P.deep})),
 G(TL([[40,'347','Nasce em','Estridão'],[120,'382','Dâmaso pede','a revisão'],[200,'386','Muda-se','para Belém'],[280,'405','Conclui','a Vulgata'],[350,'420','Morre','em Belém']],130)+T(200,226,'1546: o Concílio de Trento reconhece a Vulgata como texto oficial',{s:11,i:1,f:P.red}))
 ];
-const C1=SV('0 0 400 340',rays(200,150,70,200,24,'rgba(201,143,63,.35)')+openBook(200,128,230,130,P.cr,P.deep)+C(200,128,0,'none')+T(200,60,'VULGATA',{s:30,w:700,f:'#e8c27c'})+PA('M60 300Q200 262 340 300','none','rgba(201,143,63,.6)',2),'#3b2314',1);
+/* Foto real: São Jerônimo estudando e escrevendo. Fonte e licença: ver página de crédito no Wikimedia Commons. */
+const C1=SV('0 0 400 340',`<image href="https://upload.wikimedia.org/wikipedia/commons/d/d6/St.-Jerome-In-His-Study.jpg" x="0" y="0" width="400" height="340" preserveAspectRatio="xMidYMid slice"/>`,'#3b2314',1);
 /* ---------- ESTANDE 2 ---------- */
 const tile=(x,y,w,h,col,t,e,ic)=>R(x,y,w,h,P.cr,{s:col,r:8,sw:2.5})+R(x,y,w,16,col,{r:8})+R(x,y+8,w,8,col)+T(x+w/2,y+12,t,{s:10.5,w:700,f:P.cr})+T(x+w/2,y+38,ic,{s:17})+T(x+w/2,y+h-8,e,{s:9.5,i:1,f:P.deep});
 const A2=[
@@ -230,7 +231,8 @@ G(R(60,50,280,150,P.cr,{s:P.deep,r:8,sw:3})+PA('M60 54L200 150L340 54','none',P.
 G(PA('M100 190V70Q100 50 130 48Q160 46 170 70V190','none',P.deep,5)+PA('M100 190Q135 220 170 190','none',P.deep,5)+[0,1,2,3,4,5].map(i=>L(112+i*10,56+i*3,112+i*10,196-i*3,P.gold,2)).join('')+rays(260,120,0,0,1)+T(270,100,'150',{s:46,w:700,f:P.red})+T(270,130,'Salmos',{s:20,i:1})+T(270,156,'cânticos e orações',{s:12,f:P.deep})+T(200,238,'A harpa, símbolo da poesia e da oração',{s:11.5,i:1,f:P.deep})),
 G([0,1,2,3,4,5,6].map(i=>R(30+i*48,160-i*0,24,60,i%2?P.gold:'#e2b36a',{r:3,s:P.deep,sw:1.5})).join('')+[0,1,2,3,4,5,6].map(i=>PA(`M${42+i*48} ${150}q8-14 0-28q-8 14 0 28z`,P.gold)).join('')+PA('M30 112H366','none',P.deep,3)+T(200,58,'Apocalipse',{s:26,w:700})+T(200,84,'7 igrejas · 7 selos · 7 trombetas',{s:13,i:1,f:P.deep})+T(200,236,'O número sete aparece como símbolo de plenitude',{s:11.5,i:1,f:P.deep}))
 ];
-const C2=SV('0 0 400 340',[0,1,2,3,4].map(i=>C(40+i*80,120,28,'rgba(201,143,63,.2)',{s:'#c98f3f',sw:2})+T(40+i*80,130,['✉','♫','✝','☄','◎'][i],{s:26,f:'#e8c27c'})).join(''),'#3b2314',1);
+/* Foto real: São Paulo escrevendo suas cartas. Fonte e licença: ver página de crédito no Wikimedia Commons. */
+const C2=SV('0 0 400 340',`<image href="https://upload.wikimedia.org/wikipedia/commons/2/27/Jan_Lievens_-_St._Paul_writing_to_the_Thessalonians.jpg" x="0" y="0" width="400" height="340" preserveAspectRatio="xMidYMid slice"/>`,'#3b2314',1);
 /* ---------- ESTANDE 3 ---------- */
 const bar=(y,w,c,lab,val)=>T(98,y+14,lab,{a:'end',s:12.5,w:700})+R(106,y,w*2.6,22,c,{r:4})+T(106+w*2.6+8,y+16,val,{a:'start',s:13,w:700});
 const A3=[
@@ -240,7 +242,8 @@ G(T(200,24,'Os 7 deuterocanônicos',{s:15,w:700,i:1})+R(20,170,360,10,P.deep,{r:
 G(R(150,14,100,32,P.deep,{r:6})+T(200,35,'Cristianismo',{s:14,w:700,f:P.cr})+L(200,46,200,66,P.deep,2.5)+L(70,66,330,66,P.deep,2.5)+[[70,'Católica',P.red],[200,'Ortodoxa',P.grn],[330,'Protestante',P.blu]].map(p=>L(p[0],66,p[0],82,P.deep,2.5)+R(p[0]-50,82,100,30,p[2],{r:6})+T(p[0],102,p[1],{s:13,w:700,f:P.cr})).join('')+L(330,112,330,132,P.deep,2.5)+L(240,132,330,132,P.deep,2.5)+['Luterana','Anglicana','Batista','Presbiteriana','Pentecostal'].map((n,i)=>R(30+i*72,150,66,26,'#a9c0d8',{r:5})+T(63+i*72,167,n,{s:9.5,w:700})+(i<5?L(63+i*72,132,63+i*72,150,P.deep,1.5):'')).join('')+L(63,132,330,132,P.deep,2)+T(200,198,'As igrejas evangélicas fazem parte do ramo protestante',{s:11.5,i:1,f:P.deep})+T(200,226,'Esquema simplificado',{s:11,i:1,f:P.deep})),
 G(TL([[50,'1054','Cisma entre','Oriente e Ocidente'],[140,'1517','Reforma','de Lutero'],[230,'1546','Trento define','o cânon católico'],[320,'1611','Bíblia','King James']],130)+T(200,226,'Marcos que ajudam a entender as diferenças',{s:11.5,i:1,f:P.deep}))
 ];
-const C3=SV('0 0 400 340',[['66','#3f5f7f',150],['73','#8c2f1b',190],['76+','#4b6b4a',130]].map((b,i)=>R(52+i*104,215-b[2],84,b[2],b[1],{r:6,s:'#e8c27c',sw:2})+T(94+i*104,215-b[2]/2+8,b[0],{s:30,w:700,f:'#fbf3df'})+T(94+i*104,215-b[2]/2+30,['protestante','católica','ortodoxa'][i],{s:12,f:'#f2d9a0',i:1})).join('')+R(36,215,330,8,'#8a5a24',{r:3}),'#3b2314',1);
+/* Foto real: Coleção de Bíblias em diferentes línguas. Fonte e licença: ver página de crédito no Wikimedia Commons. */
+const C3=SV('0 0 400 340',`<image href="https://upload.wikimedia.org/wikipedia/commons/6/68/Collection_of_Bibles_and_New_Testaments.jpg" x="0" y="0" width="400" height="340" preserveAspectRatio="xMidYMid slice"/>`,'#3b2314',1);
 /* ---------- ESTANDE 4 ---------- */
 const seg=(x,y,w,h,c,t,n)=>R(x,y,w,h,c,{s:P.cr,sw:2})+T(x+w/2,y+h/2+4,n,{s:15,w:700,f:P.cr})+T(x+w/2,y+h+16,t,{s:10.5,w:700});
 const A4=[
@@ -250,7 +253,8 @@ G(T(200,70,'João  3 : 16',{s:42,w:700})+PA('M92 84v10h64v-10','none',P.red,3)+T
 G(T(200,22,'Provérbios: 31 capítulos',{s:14,w:700,i:1})+Array.from({length:31},(_,i)=>{const x=36+(i%7)*47,y=38+Math.floor(i/7)*36;return R(x,y,40,30,i==30?P.red:P.cr,{s:P.deep,r:4})+T(x+20,y+20,i+1,{s:13,w:700,f:i==30?P.cr:P.ink})}).join('')+T(200,236,'Muitos leitores leem um capítulo por dia do mês',{s:11.5,i:1,f:P.deep})),
 G(T(200,22,'Salmos: 150 poemas em 5 coleções',{s:14,w:700,i:1})+(()=>{let out='',x=20;[['1–41',41,P.red],['42–72',31,P.deep],['73–89',17,P.grn],['90–106',17,P.blu],['107–150',44,P.gold]].forEach((s,i)=>{const w=s[1]*2.16;out+=R(x,70,w,52,s[2],{s:P.cr,sw:2})+T(x+w/2,100,s[0],{s:s[1]<20?11:14,w:700,f:P.cr})+T(x+w/2,148,['I','II','III','IV','V'][i],{s:12,w:700});x+=w});return out})()+T(200,200,'Salmo 119 é o mais longo · Salmo 117 é o mais curto',{s:12,i:1,f:P.deep}))
 ];
-const C4=SV('0 0 400 340',R(40,200,320,10,'#8a5a24',{r:3})+[['#8c2f1b',90],['#4b6b4a',110],['#3f5f7f',80],['#c98f3f',100],['#6b4429',120],['#8c2f1b',95],['#4b6b4a',105],['#3f5f7f',85]].map((b,i)=>R(52+i*36,200-b[1],30,b[1],b[0],{r:3,s:'#e8c27c',sw:1.5})).join(''),'#3b2314',1);
+/* Foto real: Bíblia aberta, representando sua organização. Fonte e licença: ver página de crédito no Wikimedia Commons. */
+const C4=SV('0 0 400 340',`<image href="https://upload.wikimedia.org/wikipedia/commons/6/6a/Open_Bible.jpg" x="0" y="0" width="400" height="340" preserveAspectRatio="xMidYMid slice"/>`,'#3b2314',1);
 /* ---------- ESTANDE 5 ---------- */
 const A5=[
 G((()=>{const n=['Luz e trevas','Sol, lua e plantas','Águas e terra','Criação de Adão','Criação de Eva','Queda e expulsão','Sacrifício de Noé','O Dilúvio','Embriaguez de Noé'];let o=R(60,6,280,232,'#e8d3a2',{s:P.deep,r:6,sw:2.5})+T(34,126,'Profetas e sibilas',{s:10,f:P.deep,r:-90})+T(366,126,'Profetas e sibilas',{s:10,f:P.deep,r:90})+T(200,20,'ALTAR ▲',{s:9.5,w:700,f:P.red});n.forEach((t,i)=>{const big=i%2===0&&false;o+=R(130,26+i*23.4,140,19,[P.red,P.red,P.red,P.blu,P.blu,P.blu,P.grn,P.grn,P.grn][i],{r:3})+T(200,39+i*23.4,(i+1)+'. '+t,{s:10.5,f:P.cr,w:700})});return o+T(200,246,'▼ ENTRADA',{s:9,w:700,f:P.red})})()),
@@ -259,8 +263,20 @@ G(TL([[44,'1473–81','Construção'],[122,'1481–82','Afrescos','das paredes']
 G(R(0,0,400,250,'#cfd9e6')+R(70,120,260,100,'#d7b98a',{s:P.deep,sw:3})+PA('M60 122L200 70L340 122Z','#8c5a3a',P.deep,3)+R(255,40,26,58,'#a8907a',{s:P.deep,sw:2.5})+C(268,30,11,'#ffffff',{s:'#b9c4d0'})+C(280,16,13,'#ffffff',{s:'#b9c4d0'})+C(270,4,10,'#ffffff',{s:'#b9c4d0'})+R(110,150,36,70,'#8a5a24',{r:3})+R(190,150,36,70,'#8a5a24',{r:3})+T(200,240,'Fumaça branca: já há um novo papa',{s:12,i:1,w:700,f:P.deep})),
 G(R(0,0,400,250,'#3b2314')+[['9','cenas do Gênesis'],['7','profetas'],['5','sibilas'],['300+','figuras no teto']].map((n,i)=>T(100+(i%2)*200,86+Math.floor(i/2)*84,n[0],{s:i==3?44:50,w:700,f:'#e8c27c'})+T(100+(i%2)*200,110+Math.floor(i/2)*84,n[1],{s:14,i:1,f:'#f3e6c8'})).join(''))
 ];
-const C5=SV('0 0 400 340',PA('M40 300V140Q40 30 200 30Q360 30 360 140V300','rgba(201,143,63,.14)','#c98f3f',3)+[0,1,2,3,4].map(i=>R(110+i*36,100,30,22,i%2?'#8c2f1b':'#3f5f7f',{r:2,s:'#e8c27c',sw:1.2})).join('')+R(110,128,174,22,'#c98f3f',{r:2,op:.55}),'#3b2314',1);
-
+/* Foto real: Teto da Capela Sistina, de Michelangelo. Fonte e licença: ver página de crédito no Wikimedia Commons. */
+const C5=SV('0 0 400 340',`<image href="https://upload.wikimedia.org/wikipedia/commons/2/2a/Sistine_ceiling.jpg" x="0" y="0" width="400" height="340" preserveAspectRatio="xMidYMid slice"/>`,'#3b2314',1);
+/* Créditos das capas fotográficas (Wikimedia Commons):
+   C1: Bartolomeo Cavarozzi, St.-Jerome-In-His-Study.jpg — domínio público.
+       https://commons.wikimedia.org/wiki/File:St.-Jerome-In-His-Study.jpg
+   C2: Jan Lievens, St. Paul writing to the Thessalonians — domínio público.
+       https://commons.wikimedia.org/wiki/File:Jan_Lievens_-_St._Paul_writing_to_the_Thessalonians.jpg
+   C3: Norbert Kiss, Collection of Bibles and New Testaments — CC BY-SA 2.0.
+       https://commons.wikimedia.org/wiki/File:Collection_of_Bibles_and_New_Testaments.jpg
+   C4: Wnorbutas, Open Bible — CC BY-SA 3.0.
+       https://commons.wikimedia.org/wiki/File:Open_Bible.jpg
+   C5: Michelangelo, Sistine ceiling — domínio público.
+       https://commons.wikimedia.org/wiki/File:Sistine_ceiling.jpg
+*/
 const DATA=[
 {t:"Entre manuscritos e tradições, o legado de São Jerônimo",sub:"A origem da Bíblia em latim",cover:C1,
  lead:"Há mais de 1.600 anos, um estudioso decidiu que todos deveriam poder ler a Bíblia na língua que entendiam.",
