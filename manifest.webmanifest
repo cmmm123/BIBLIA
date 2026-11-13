@@ -4,7 +4,7 @@
  "description": "Bíblia Sagrada para ler, meditar e memorizar",
  "lang": "pt-BR",
  "start_url": "/biblia/",
- "scope": "/",
+ "scope": "/biblia/",
  "display": "standalone",
  "orientation": "portrait",
  "background_color": "#d8c9b2",
