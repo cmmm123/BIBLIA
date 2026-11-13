@@ -185,6 +185,7 @@ p.fb.bad{display:block;margin:12px 0 0;color:var(--bad);font-size:16px}p.fb.bad 
 .gal button{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);text-align:left}
 .gal button svg{display:block;width:100%;height:auto}
 .gal span{display:block;padding:8px 12px;font:italic 14.5px var(--ff);color:var(--ink)}
+.gal .fig{margin:0}.gal .gal-photo{display:block;width:100%;padding:0;border:0;background:transparent;text-align:left;cursor:zoom-in}.gal .gal-photo img{display:block;width:100%;height:auto;max-height:70vh;object-fit:cover}.gal .gal-photo span{display:block;padding:8px 12px;font:italic 14.5px var(--ff);color:var(--ink)}.gal .fig figcaption{font:italic 12px/1.4 system-ui,sans-serif}.gal .fig figcaption a{color:var(--gold)}.lbi img{display:block;width:100%;height:auto;max-height:68vh;object-fit:contain}
 .lbi{border-radius:6px;overflow:hidden}.lbi svg{display:block;width:100%;height:auto;max-height:68vh}
 .quote .qb{display:block;margin-top:6px;font:600 14px var(--ff);color:var(--mut);font-style:normal}
 .flip{height:200px}.flip .b{overflow:auto}
@@ -350,6 +351,12 @@ const DATA=[
  {f:"Quem pintou cada uma",b:"A Queda do Homem e a Criação de Adão são de Michelangelo, no teto. A Entrega das Chaves é de Perugino e a Santa Ceia, de Cosimo Rosselli, nas paredes laterais."}],
  gal:[{svg:A5[0],cap:"As nove cenas do teto, do altar à entrada"},{svg:A5[1],cap:"Planta simplificada da capela"},{svg:A5[2],cap:"Linha do tempo da Capela Sistina"},{svg:A5[3],cap:"A chaminé do conclave"},{svg:A5[4],cap:"O teto em números"}]}
 ];
+
+/* Fotografias e obras reais das galerias. Cada item aponta para sua página de origem e licença no Wikimedia Commons. */
+const GALLERY_PHOTOS=[[["Venice Saint Jerome.jpg","São Jerônimo com o leão","Domínio público"],["Lancz Saint Jerome.jpg","São Jerônimo em pintura histórica","Wikimedia Commons"],["Silesia Saint Jerome from Głogów.jpg","São Jerônimo em uma obra medieval","Wikimedia Commons"],["Albrecht Dürer - Saint Jerome and the Lion - BF804 - Barnes Foundation.jpg","São Jerônimo e o leão, de Albrecht Dürer","Wikimedia Commons"],["6 Cecco di Pietro St. Jerome in His Study. North Carolina Museum of Art, Raleigh.jpg","São Jerônimo em seu estudo","Wikimedia Commons"]],[["Parable Sower.jpg","A parábola do semeador, de Alexandre Bida","Domínio público"],["David de Haen - The Good Samaritan.jpeg","A parábola do Bom Samaritano","Wikimedia Commons"],["Jan Wijnants - Parable of the Good Samaritan.jpg","O Bom Samaritano, de Jan Wijnants","Domínio público"],["Jan Lievens - St. Paul writing to the Thessalonians.jpg","São Paulo escrevendo aos Tessalonicenses","Domínio público"],["Psalm 118.jpg","Bíblia aberta no Salmo 118","CC0"]],[["Collection of Bibles and New Testaments.jpg","Bíblias e Novos Testamentos em diferentes edições","CC BY-SA 2.0"],["Bible-open.jpg","Bíblia familiar de 1859","CC BY-SA 3.0"],["Gutenburg bible.jpg","Página da Bíblia de Gutenberg","Domínio público"],["Gutenberg Bible (page).JPG","Página da Bíblia de Gutenberg","Wikimedia Commons"],["Bíblia Bible.JPG","Bíblia luterana preservada no Museu da Imigração de São Paulo","Wikimedia Commons"]],[["Open Bible with pen (4543060842).jpg","Bíblia aberta com uma caneta","CC BY 2.0"],["Biblia 16.jpg","Livro aberto com tipografia antiga","CC BY 4.0"],["Open Bible.jpg","Bíblia encadernada aberta","CC BY-SA 3.0"],["Psalm 118.jpg","Texto bíblico no Salmo 118","CC0"],["Gutenberg Bible (page).JPG","Página impressa da Bíblia de Gutenberg","Wikimedia Commons"]],[["Creation of Adam.jpg","A Criação de Adão, de Michelangelo","Domínio público"],["Sistine Chapel ceiling, Creation of Adam.jpg","Detalhe do teto da Capela Sistina","Domínio público"],["Perugino, consegna delle chiavi e ultima cena.jpg","A Entrega das Chaves, de Perugino","Domínio público"],["Cosimo Rosselli Ultima cena.jpg","A Última Ceia, de Cosimo Rosselli","Domínio público"],["Michelangelo Buonarroti - Last Judgment - WGA15472.jpg","O Juízo Final, de Michelangelo","Domínio público"]]];
+const commonsFile=name=>"https://commons.wikimedia.org/wiki/File:"+encodeURIComponent(name).replace(/%20/g,"_");
+const commonsImage=name=>"https://commons.wikimedia.org/wiki/Special:FilePath/"+encodeURIComponent(name)+"?width=1200";
+DATA.forEach((d,i)=>{d.gal=GALLERY_PHOTOS[i].map(([name,cap,credit])=>({name,cap,credit,src:commonsImage(name),page:commonsFile(name),svg:'<img src="'+commonsImage(name)+'" alt="'+cap.replace(/&/g,"&amp;").replace(/"/g,"&quot;")+'" loading="lazy">'}))});
 const ST=DATA.map((d,i)=>({n:i+1,t:d.t,sub:d.sub}));
 
 const ROUTE=["inicio","estande-1","estande-2","estande-3","estande-4","estande-5","baixar"];
@@ -397,7 +404,7 @@ function content(n){
   const el=pane(n).querySelector(".tc"),tab=tabs[n]||"r";let h="";
   const D=DATA[n-1];
   if(tab==="r")h=`<p class="lead">${D.lead}</p>`+D.secs.map((x,k)=>`<h3 class="hh">${x.h}</h3><p class="txt">${x.p}</p>`+(k===0?`<figure class="fig" data-i="0">${D.gal[0].svg}<figcaption>${D.gal[0].cap}</figcaption></figure>`:"")).join("")+`<div class="orn">${ic("cross")}</div><div class="quote">${D.quote.t}<small class="qb">${D.quote.by}</small></div>`;
-  else if(tab==="g")h=`<div class="gal">${D.gal.map((g,k)=>`<button data-i="${k}" aria-label="Ampliar: ${g.cap}">${g.svg}<span>${g.cap}</span></button>`).join("")}</div><p class="mut" style="margin-top:10px">Toque em uma imagem para ampliar.</p>`;
+  else if(tab==="g")h=`<div class="gal">${D.gal.map((g,k)=>`<figure class="fig"><button class="gal-photo" data-i="${k}" aria-label="Ampliar: ${g.cap}">${g.svg}<span>${g.cap}</span></button><figcaption>Fonte: <a href="${g.page}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> · ${g.credit}</figcaption></figure>`).join("")}</div><p class="mut" style="margin-top:10px">Toque em uma imagem para ampliar.</p>`;
   else if(tab==="c")h=`<p class="mut" style="margin:0 0 12px">Toque nos cartões para virar.</p>`+D.curios.map(c=>`<button class="flip" data-f="1"><div class="fi"><div class="f">${ic("bulb")}<b>${c.f}</b><small>Toque para revelar</small></div><div class="b">${c.b}</div></div></button>`).join("");
   else h=quiz(n);
   el.innerHTML=h;
@@ -453,7 +460,7 @@ function confete(){
 }
 function lightbox(i){
   const L=document.createElement("div");L.className="lb";let k=i;const g=DATA[Math.max(1,cur)-1].gal;
-  const draw=()=>{L.innerHTML=`<div class="lbi">${g[k].svg}</div><p>${g[k].cap} (${k+1} de ${g.length})</p><div class="rw"><button data-d="-1">‹</button><button data-d="0">Fechar</button><button data-d="1">›</button></div>`};
+  const draw=()=>{L.innerHTML=`<div class="lbi">${g[k].svg}</div><p>${g[k].cap} (${k+1} de ${g.length})</p><p><a href="${g[k].page}" target="_blank" rel="noopener noreferrer" style="color:#d9a866">Ver origem e licença da imagem</a></p><div class="rw"><button data-d="-1">‹</button><button data-d="0">Fechar</button><button data-d="1">›</button></div>`};
   draw();L.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const d=+b.dataset.d;if(d===0)L.remove();else{k=(k+d+g.length)%g.length;draw()}});document.body.appendChild(L);
 }
 function sheet(){
@@ -496,7 +503,6 @@ addEventListener("resize",()=>{pg.scrollLeft=Math.max(0,cur)*pg.clientWidth;fram
 const rr={};
 function loadReal(){DATA.forEach((D,i)=>{const n=i+1;for(let k=0;k<=5;k++){const src="img/e"+n+"-"+k+".jpg",im=new Image();im.onload=()=>{const tag='<img src="'+src+'" alt="'+(k?D.gal[k-1].cap:D.t)+'" loading="lazy">';if(k)D.gal[k-1].svg=tag;else D.cover=tag;clearTimeout(rr[n]);rr[n]=setTimeout(()=>{pane(n).innerHTML=stand(n);content(n)},80)};im.src=src}})}
 build();
-loadReal();
 const first=parse();pg.scrollLeft=first*pg.clientWidth;cur=first;
 if(first>=1&&first<=5&&!seen.includes(first)){seen.push(first);lsS("mostra-vistos",seen);pane(0).innerHTML=home()}
 paint();paintTheme();frame();
