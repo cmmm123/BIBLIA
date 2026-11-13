@@ -415,7 +415,7 @@ function end(){
   return `<div class="in pad"><div class="fin"><div class="cf" id="cf"></div><div class="rays"></div><p class="k" style="position:relative">Fim da mostra</p><h2 style="position:relative">Obrigado pela visita</h2><p style="position:relative">Leve a Bíblia com você: o aplicativo funciona no seu celular, sem precisar procurar na loja.</p>
 <div class="phone"><img src="${APP}" alt="Tela inicial do aplicativo Bíblia Sagrada"></div>
 <ul class="ben"><li>Bíblia completa para ler, com áudio em voz alta</li><li>Versículo do dia com reflexão</li><li>Planos de leitura, memorização e quiz</li><li>Meditação, orações e diário, tudo no seu aparelho</li></ul>
-<button class="btn" id="inst" type="button">Instalar o aplicativo da Bíblia</button><p id="installHelp" class="hint" hidden></p></div>
+<a class="btn" id="inst" href="${BIBLIA}">Instalar o aplicativo da Bíblia</a></div>
 </div>`;
 }
 /* ---- estrutura ---- */
@@ -496,10 +496,9 @@ function paintTheme(){const t=curTheme(),b=$("#th");if(b){b.innerHTML=t==="dark"
 document.addEventListener("click",e=>{if(!e.target.closest("#th"))return;const t=curTheme()==="dark"?"light":"dark";document.documentElement.dataset.theme=t;lsS("mostra-tema",t);paintTheme()});
 let dip=null;
 const setInst=t=>{const a=$("#inst");if(a)a.textContent=t};
-const installHelp=t=>{const h=$("#installHelp");if(h){h.textContent=t;h.hidden=false}};
-addEventListener("beforeinstallprompt",e=>{e.preventDefault();dip=e;const h=$("#installHelp");if(h)h.hidden=true;setInst("Instalar o aplicativo da Bíblia")});
-addEventListener("appinstalled",()=>{dip=null;setInst("Aplicativo instalado");installHelp("O aplicativo já está instalado neste aparelho.")});
-document.addEventListener("click",e=>{const a=e.target.closest("#inst");if(!a)return;e.preventDefault();if(!dip){installHelp("A instalação automática não está disponível neste navegador agora. No Chrome, abra o menu ⋮ e escolha ‘Instalar aplicativo’ ou ‘Adicionar à tela inicial’.");return}const d=dip;dip=null;try{d.prompt();d.userChoice.then(r=>{if(r.outcome==="accepted")setInst("Instalando o aplicativo...");else dip=d})}catch(x){dip=d;installHelp("Não foi possível abrir a instalação automática. Tente pelo menu ⋮ do navegador.")}});
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();dip=e;setInst("Instalar o aplicativo da Bíblia")});
+addEventListener("appinstalled",()=>{dip=null;setInst("Aplicativo instalado")});
+document.addEventListener("click",e=>{const a=e.target.closest("#inst");if(!a||!dip)return;e.preventDefault();const d=dip;dip=null;try{d.prompt();d.userChoice.then(r=>{if(r.outcome==="accepted")setInst("Instalando o aplicativo...");else dip=d})}catch(x){dip=d}});
 addEventListener("keydown",e=>{if(document.querySelector(".lb,.sh"))return;if(e.key==="ArrowRight")go(cur+1);if(e.key==="ArrowLeft")go(cur-1)});
 addEventListener("hashchange",()=>{const i=parse();if(i!==cur)go(i)});
 addEventListener("resize",()=>{pg.scrollLeft=Math.max(0,cur)*pg.clientWidth;frame()});
