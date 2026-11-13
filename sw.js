@@ -1,10 +1,10 @@
-const V="biblia-v6";
-const FILES=["/biblia/","/oracoes.js","/icon-192.png","/icon-512.png"];
+const V="biblia-v7";
+const FILES=["/","/biblia/","/oracoes.js","/icon-192.png","/icon-512.png"];
 const APP_PATH="/biblia/";
 const SHARED_ASSETS=new Set(["/oracoes.js","/icon-192.png","/icon-512.png"]);
 
 function isAppRequest(url){
-  return url.pathname===APP_PATH || url.pathname.startsWith(APP_PATH) || SHARED_ASSETS.has(url.pathname);
+  return url.pathname==="/" || url.pathname===APP_PATH || url.pathname.startsWith(APP_PATH) || SHARED_ASSETS.has(url.pathname);
 }
 
 self.addEventListener("install",e=>{
