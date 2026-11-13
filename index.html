@@ -494,11 +494,7 @@ const curTheme=()=>document.documentElement.dataset.theme||(matchMedia("(prefers
 function paintTheme(){const t=curTheme(),b=$("#th");if(b){b.innerHTML=t==="dark"?SUN:MOON;b.setAttribute("aria-label",t==="dark"?"Mudar para tema claro":"Mudar para tema escuro")}}
 {const sv=lsG("mostra-tema",null);if(sv==="dark"||sv==="light")document.documentElement.dataset.theme=sv}
 document.addEventListener("click",e=>{if(!e.target.closest("#th"))return;const t=curTheme()==="dark"?"light":"dark";document.documentElement.dataset.theme=t;lsS("mostra-tema",t);paintTheme()});
-let dip=null;
-const setInst=t=>{const a=$("#inst");if(a)a.textContent=t};
-addEventListener("beforeinstallprompt",e=>{e.preventDefault();dip=e;setInst("Instalar o aplicativo da Bíblia")});
-addEventListener("appinstalled",()=>{dip=null;setInst("Aplicativo instalado")});
-document.addEventListener("click",e=>{const a=e.target.closest("#inst");if(!a||!dip)return;e.preventDefault();const d=dip;dip=null;try{d.prompt();d.userChoice.then(r=>{if(r.outcome==="accepted")setInst("Instalando o aplicativo...");else dip=d})}catch(x){dip=d}});
+// A instalação é oferecida pelo próprio navegador na página do aplicativo.
 addEventListener("keydown",e=>{if(document.querySelector(".lb,.sh"))return;if(e.key==="ArrowRight")go(cur+1);if(e.key==="ArrowLeft")go(cur-1)});
 addEventListener("hashchange",()=>{const i=parse();if(i!==cur)go(i)});
 addEventListener("resize",()=>{pg.scrollLeft=Math.max(0,cur)*pg.clientWidth;frame()});
