@@ -6,6 +6,31 @@
 <meta name="theme-color" content="#3b2314">
 <link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="icon" href="/icon-192.png">
 <script>if("serviceWorker"in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
+<script>
+window.__bibliaInstallPrompt=null;
+window.addEventListener("beforeinstallprompt",function(event){
+  event.preventDefault();
+  window.__bibliaInstallPrompt=event;
+});
+window.addEventListener("appinstalled",function(){
+  window.__bibliaInstallPrompt=null;
+  var button=document.getElementById("inst");
+  if(button)button.textContent="Aplicativo instalado";
+});
+document.addEventListener("click",function(event){
+  var button=event.target.closest("#inst");
+  if(!button)return;
+  event.preventDefault();
+  var promptEvent=window.__bibliaInstallPrompt;
+  if(!promptEvent)return;
+  window.__bibliaInstallPrompt=null;
+  promptEvent.prompt();
+  promptEvent.userChoice.then(function(choice){
+    if(choice.outcome==="accepted")button.textContent="Instalando o aplicativo...";
+    else window.__bibliaInstallPrompt=promptEvent;
+  }).catch(function(){window.__bibliaInstallPrompt=promptEvent;});
+});
+</script>
 <style>:root{color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}.gal button img,.fig img,.lbi img{display:block;width:100%;height:auto;max-height:70vh;object-fit:cover}
 </style>
 <title>Guia da Mostra Bíblica</title>
@@ -415,7 +440,7 @@ function end(){
   return `<div class="in pad"><div class="fin"><div class="cf" id="cf"></div><div class="rays"></div><p class="k" style="position:relative">Fim da mostra</p><h2 style="position:relative">Obrigado pela visita</h2><p style="position:relative">Leve a Bíblia com você: o aplicativo funciona no seu celular, sem precisar procurar na loja.</p>
 <div class="phone"><img src="${APP}" alt="Tela inicial do aplicativo Bíblia Sagrada"></div>
 <ul class="ben"><li>Bíblia completa para ler, com áudio em voz alta</li><li>Versículo do dia com reflexão</li><li>Planos de leitura, memorização e quiz</li><li>Meditação, orações e diário, tudo no seu aparelho</li></ul>
-<a class="btn" id="inst" href="${BIBLIA}">Instalar o aplicativo da Bíblia</a></div>
+<button class="btn" id="inst" type="button">Instalar o aplicativo da Bíblia</button></div>
 </div>`;
 }
 /* ---- estrutura ---- */
