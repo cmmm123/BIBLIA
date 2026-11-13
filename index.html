@@ -519,18 +519,32 @@ if(installButton){
   installButton.addEventListener("click",function(event){
     event.preventDefault();
     event.stopPropagation();
+    // Prefere a API nativa atual quando disponível; usa beforeinstallprompt
+    // como fallback nos Chromes que ainda expõem o evento legado.
+    if(typeof navigator.install==="function"){
+      navigator.install().then(function(){
+        installButton.textContent="Instalação solicitada";
+      }).catch(function(error){
+        console.warn("A instalação não foi concluída:",error);
+      });
+      return;
+    }
     var promptEvent=window.__bibliaInstallPrompt;
     if(!promptEvent){
-      installButton.textContent="Chrome ainda não liberou a instalação";
+      installButton.textContent="Instalação ainda indisponível neste navegador";
       installButton.setAttribute("aria-live","polite");
       return;
     }
     window.__bibliaInstallPrompt=null;
-    promptEvent.prompt();
-    promptEvent.userChoice.then(function(choice){
+    promptEvent.prompt().then(function(){
+      return promptEvent.userChoice;
+    }).then(function(choice){
       if(choice.outcome==="accepted")installButton.textContent="Instalando o aplicativo...";
-      else window.__bibliaInstallPrompt=promptEvent;
-    }).catch(function(){window.__bibliaInstallPrompt=promptEvent;});
+      else window.__bibliaInstallPrompt=null;
+    }).catch(function(error){
+      console.warn("O Chrome não conseguiu abrir a instalação:",error);
+      window.__bibliaInstallPrompt=null;
+    });
   });
 }
 const first=parse();pg.scrollLeft=first*pg.clientWidth;cur=first;
