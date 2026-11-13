@@ -363,7 +363,9 @@ const ROUTE=["inicio","estande-1","estande-2","estande-3","estande-4","estande-5
 const $=s=>document.querySelector(s),pg=$("#pg");
 const lsG=(k,d)=>{try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}};
 const lsS=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
-let seen=lsG("mostra-vistos",[]),fs=lsG("mostra-fonte",1),cur=-1,tabs={},qs={},swiped=lsG("mostra-deslizou",false);
+let seen=[],fs=lsG("mostra-fonte",1),cur=-1,tabs={},qs={},swiped=lsG("mostra-deslizou",false);
+// Cada nova visita ao site começa com os estandes zerados. Isso não afeta o app em /biblia/.
+lsS("mostra-vistos",seen);lsS("mostra-festa",false);
 document.documentElement.style.setProperty("--fs",fs);
 const parse=()=>{const i=ROUTE.indexOf(location.hash.replace("#",""));return i<0?0:i};
 const IC={clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',play:'<path d="M8 5l11 7-11 7z" fill="currentColor"/>',stop:'<rect x="6" y="6" width="12" height="12" rx="1.5" fill="currentColor"/>',check:'<path d="M5 12.5l4.5 4.5L19 7"/>',bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/>',cross:'<path d="M12 3v18M6 9h12"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',left:'<path d="M15 5l-7 7 7 7"/>',right:'<path d="M9 5l7 7-7 7"/>',up:'<path d="M6 15l6-6 6 6"/>',home:'<path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-6h4v6"/>',down:'<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>'};
