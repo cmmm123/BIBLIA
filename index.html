@@ -4,7 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#3b2314">
-<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="icon" href="/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bíblia">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" href="/icon-192.png">
 <script>if("serviceWorker"in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});</script>
 <script>
 window.__bibliaInstallPrompt=null;
@@ -519,8 +523,33 @@ if(installButton){
   installButton.addEventListener("click",function(event){
     event.preventDefault();
     event.stopPropagation();
-    // Prefere a API nativa atual quando disponível; usa beforeinstallprompt
-    // como fallback nos Chromes que ainda expõem o evento legado.
+    // iOS/iPadOS não oferece beforeinstallprompt: a instalação é feita
+    // pelo menu Compartilhar do navegador. Mantém intacto o fluxo Android abaixo.
+    var ua=window.navigator.userAgent||"";
+    var isIOS=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+    var isStandalone=window.navigator.standalone===true||window.matchMedia("(display-mode: standalone)").matches;
+    if(isIOS){
+      if(isStandalone){
+        installButton.textContent="Aplicativo já instalado";
+        return;
+      }
+      var oldHelp=document.getElementById("ios-install-help");
+      if(oldHelp)oldHelp.remove();
+      var help=document.createElement("div");
+      help.id="ios-install-help";
+      help.setAttribute("role","dialog");
+      help.setAttribute("aria-modal","true");
+      help.setAttribute("aria-labelledby","ios-install-title");
+      help.style.cssText="position:fixed;inset:0;z-index:9999;background:rgba(20,12,7,.72);display:flex;align-items:flex-end;justify-content:center;padding:16px";
+      help.innerHTML='<div style="width:min(100%,480px);background:var(--card,#f8f1e0);color:var(--ink,#3b2314);border:1px solid var(--line,#d3c19d);border-radius:14px;padding:22px;box-shadow:0 12px 40px #0006;font:16px/1.5 system-ui,sans-serif"><button type="button" id="ios-install-close" aria-label="Fechar" style="float:right;border:0;background:transparent;font-size:25px;color:inherit;padding:0 6px">×</button><p style="margin:0 0 6px;font-weight:700;color:var(--gold,#8f5a22)">Instalar no iPhone</p><h2 id="ios-install-title" style="font:700 23px/1.2 Georgia,serif;margin:0 0 12px">Adicione à Tela de Início</h2><ol style="padding-left:22px;margin:0"><li style="margin:8px 0">Abra esta página no <b>Safari</b>.</li><li style="margin:8px 0">Toque no botão <b>Compartilhar</b> <span aria-label="ícone compartilhar" style="font-size:21px">□↑</span> na barra do Safari.</li><li style="margin:8px 0">Role o menu e escolha <b>Adicionar à Tela de Início</b>.</li><li style="margin:8px 0">Toque em <b>Adicionar</b>, no canto superior.</li></ol><p style="margin:12px 0 0;font-size:13px;opacity:.8">Depois, abra o ícone Bíblia na Tela de Início para usar como aplicativo.</p><button type="button" id="ios-install-done" style="width:100%;margin-top:16px;min-height:48px;border:0;border-radius:8px;background:var(--cta,#dfac66);color:var(--ctaink,#2a1a10);font-weight:700;font-size:16px">Entendi</button></div>';
+      document.body.appendChild(help);
+      function closeIOSHelp(){help.remove()}
+      help.querySelector("#ios-install-close").addEventListener("click",closeIOSHelp);
+      help.querySelector("#ios-install-done").addEventListener("click",closeIOSHelp);
+      help.addEventListener("click",function(ev){if(ev.target===help)closeIOSHelp()});
+      return;
+    }
+    // Mantém o fluxo de instalação nativa do Chrome/Android.
     if(typeof navigator.install==="function"){
       navigator.install().then(function(){
         installButton.textContent="Instalação solicitada";
